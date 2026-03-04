@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'core/theme/app_colors.dart';
 import 'features/home/screens/home_screen.dart';
+import 'features/auth/screens/login_screen.dart';
 
 void main() {
   runApp(const MathUtilityApp());
@@ -24,7 +25,7 @@ class MathUtilityApp extends StatelessWidget {
         ),
         useMaterial3: true,
       ),
-      home: const HomeScreen(),
+      home: const LoginScreen(),
     );
   }
 }
