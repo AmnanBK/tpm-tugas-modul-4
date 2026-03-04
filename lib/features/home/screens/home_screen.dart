@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../stopwatch/screens/stopwatch_screen.dart';
 import '../../../core/theme/app_colors.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -62,9 +63,18 @@ class _HomeScreenState extends State<HomeScreen> {
         return InkWell(
           onTap: () {
             // TODO: Tambahkan navigasi ke layar masing-masing (Navigator.push)
-            ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(content: Text('Menuju fitur ${features[index]}...')),
-            );
+            // ScaffoldMessenger.of(context).showSnackBar(
+            //   SnackBar(content: Text('Menuju fitur ${features[index]}...')),
+            // );
+
+            if (features[index] == 'Stopwatch') {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const StopwatchScreen(),
+                ),
+              );
+            }
           },
           child: Container(
             decoration: BoxDecoration(
