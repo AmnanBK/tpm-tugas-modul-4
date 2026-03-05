@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../stopwatch/screens/stopwatch_screen.dart';
+import '../../group_profile/screens/profile_screen.dart';
 import '../../calculator/screens/calculator_screen.dart';
 import '../../../core/theme/app_colors.dart';
 
@@ -15,7 +16,10 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final List<Widget> pages = [_buildMainMenu(), _buildProfilePlaceholder()];
+    final List<Widget> pages = [
+      _buildMainMenu(),
+      const ProfileScreen(),
+    ];
 
     return Scaffold(
       appBar: AppBar(
@@ -112,13 +116,4 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  Widget _buildProfilePlaceholder() {
-    return const Center(
-      child: Text(
-        'Halaman Profil Kelompok\n(Dalam Pengerjaan)',
-        textAlign: TextAlign.center,
-        style: TextStyle(color: AppColors.textSecondary, fontSize: 16),
-      ),
-    );
-  }
 }
