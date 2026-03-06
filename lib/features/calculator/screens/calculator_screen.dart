@@ -11,7 +11,7 @@ class CalculatorScreen extends StatefulWidget {
 
 class _CalculatorScreenState extends State<CalculatorScreen> {
   final TextEditingController display = TextEditingController();
-  final formatter = NumberFormat("#,##0.############");
+  final formatter = NumberFormat("#,##0.######");
 
   List<String> buttons = [
     '7',
@@ -83,6 +83,59 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
       return;
     }
 
+    if (RegExp(r'[0-9]').hasMatch(value)) {
+      List<String> parts = display.text.split(RegExp(r'[+\-]'));
+      String lastNumber = parts.last.replaceAll(RegExp(r'[.,]'), '');
+
+      if (lastNumber.length >= 12) {
+        ScaffoldMessenger.of(context).clearSnackBars();
+
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text('Maksimal 12 digit per bilangan'),
+            backgroundColor: Colors.redAccent,
+            behavior: SnackBarBehavior.floating,
+          ),
+        );
+
+        return;
+      }
+    }
+
+    if (value == '+' || value == '-' || value == '.') {
+      if (display.text.isEmpty && value != '-') {
+        return;
+      }
+
+      if (display.text.isNotEmpty) {
+        String lastChar = display.text[display.text.length - 1];
+
+        if (lastChar == '+' || lastChar == '-' || lastChar == '.') {
+          return;
+        }
+      }
+
+      if (value == '.') {
+        List<String> parts = display.text.split(RegExp(r'[+\-]'));
+        String currentNumber = parts.last;
+
+        if (currentNumber.contains('.')) {
+          return;
+        }
+      }
+
+      if (value == '+' || value == '-') {
+        String textToSearch = display.text.length > 1
+            ? display.text.substring(1)
+            : "";
+
+        if (textToSearch.contains('+') || textToSearch.contains('-')) {
+          ScaffoldMessenger.of(context).clearSnackBars();
+          return;
+        }
+      }
+    }
+
     setState(() {
       display.text += value;
     });
@@ -112,6 +165,7 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
               keyboardType: TextInputType.text,
               inputFormatters: [
                 FilteringTextInputFormatter.allow(RegExp(r'[0-9+\-.,]')),
+                CalculatorInputFormatter(),
               ],
               onSubmitted: (value) {
                 calculate();
@@ -137,6 +191,16 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
                   textColor = Colors.white;
                 }
 
+                Widget buttonContent;
+                if (value == '⌫') {
+                  buttonContent = Icon(Icons.backspace_outlined, size: 24);
+                } else {
+                  buttonContent = Text(
+                    value,
+                    style: const TextStyle(fontSize: 24),
+                  );
+                }
+
                 return Padding(
                   padding: const EdgeInsets.all(6),
 
@@ -146,10 +210,10 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
                     style: ElevatedButton.styleFrom(
                       backgroundColor: bgColor,
                       foregroundColor: textColor,
-                      // elevation: 0,
+                      padding: EdgeInsets.zero,
                     ),
-
-                    child: Text(value, style: const TextStyle(fontSize: 24)),
+                    child: buttonContent,
+                    //child: Text(value, style: const TextStyle(fontSize: 24)),
                   ),
                 );
               },
@@ -158,5 +222,50 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
         ],
       ),
     );
+  }
+}
+
+class CalculatorInputFormatter extends TextInputFormatter {
+  @override
+  TextEditingValue formatEditUpdate(
+    TextEditingValue oldValue,
+    TextEditingValue newValue,
+  ) {
+    String newText = newValue.text;
+
+    if (newText == '+' || newText == '.') {
+      return oldValue; // Tolak ketikan, kembalikan ke state lama
+    }
+
+    if (RegExp(r'[+\-.]{2,}').hasMatch(newText)) {
+      return oldValue;
+    }
+
+    String textToSearch = newText.length > 1 ? newText.substring(1) : "";
+    int operatorCount = 0;
+    for (int i = 0; i < textToSearch.length; i++) {
+      if (textToSearch[i] == '+' || textToSearch[i] == '-') {
+        operatorCount++;
+      }
+    }
+    if (operatorCount > 1) {
+      return oldValue;
+    }
+
+    List<String> parts = newText.split(RegExp(r'[+\-]'));
+    for (String part in parts) {
+      if (part.split('.').length > 2) {
+        return oldValue;
+      }
+    }
+
+    String lastNumber = parts.last;
+    String pureDigits = lastNumber.replaceAll(RegExp(r'[.,]'), '');
+
+    if (pureDigits.length > 12) {
+      return oldValue;
+    }
+
+    return newValue;
   }
 }
