@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '/../../core/theme/app_colors.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
@@ -6,12 +7,14 @@ class ProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColors.background,
       body: Center(
         child: ConstrainedBox(
           constraints: const BoxConstraints(
-            maxWidth: 400, // lebar card maksimal
+            maxWidth: 400,
           ),
           child: Card(
+            color: AppColors.surface,
             elevation: 3,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(12),
@@ -23,20 +26,35 @@ class ProfileScreen extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: const [
                   Text(
-                    "Kelompok Berapa Kita Ges",
+                    "Kelompok PMT",
                     style: TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.bold,
+                      color: AppColors.textPrimary,
                     ),
                   ),
-                  Divider(),
-                  Text("123230058 / Cindy Nabella Susanto"),
+                  Divider(
+                    color: AppColors.textSecondary,
+                  ),
+                  Text(
+                    "123230058 / Cindy Nabella Susanto",
+                    style: TextStyle(color: AppColors.textPrimary),
+                  ),
                   SizedBox(height: 6),
-                  Text("123230064 / Sachio Devana Putera Manildra Pasaribu"),
+                  Text(
+                    "123230064 / Sachio Devana Putera Manildra Pasaribu",
+                    style: TextStyle(color: AppColors.textPrimary),
+                  ),
                   SizedBox(height: 6),
-                  Text("123230078 / Amnan Budi Kusuma"),
+                  Text(
+                    "123230078 / Amnan Budi Kusuma",
+                    style: TextStyle(color: AppColors.textPrimary),
+                  ),
                   SizedBox(height: 6),
-                  Text("123230109 / Al Faarray"),
+                  Text(
+                    "123230109 / Al Faarray",
+                    style: TextStyle(color: AppColors.textPrimary),
+                  ),
                 ],
               ),
             ),

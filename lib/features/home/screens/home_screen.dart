@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../../stopwatch/screens/stopwatch_screen.dart';
 import '../../group_profile/screens/profile_screen.dart';
 import '../../calculator/screens/calculator_screen.dart';
+import '../../number_checker/screens/checker_screen.dart';
 import '../../../core/theme/app_colors.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -85,6 +86,12 @@ class _HomeScreenState extends State<HomeScreen> {
                 MaterialPageRoute(
                   builder: (context) => const CalculatorScreen(),
                 ),
+              );
+            } else if (features[index] == 'Cek Angka') {
+              Navigator.push(context, 
+                MaterialPageRoute
+                  (builder: (context) => const CheckerScreen(),
+                )
               );
             }
           },
