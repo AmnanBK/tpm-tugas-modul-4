@@ -4,6 +4,7 @@ import '../../group_profile/screens/profile_screen.dart';
 import '../../calculator/screens/calculator_screen.dart';
 import '../../number_checker/screens/checker_screen.dart';
 import '../../pyramid/screens/pyramid_screen.dart';
+import '../../field_counter/screens/field_counter_screen.dart';
 import '../../../core/theme/app_colors.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -99,6 +100,11 @@ class _HomeScreenState extends State<HomeScreen> {
                 MaterialPageRoute
                   (builder: (context) => const PyramidScreen(),
                 )
+              );
+            } else if (features[index] == 'Total Digit') {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const FieldCounterScreen()),
               );
             }
           },
