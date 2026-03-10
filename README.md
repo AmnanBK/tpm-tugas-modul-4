@@ -1,6 +1,5 @@
 # 📱 Tugas 2: Teknologi Pemrograman Mobile IF-E
 
-
 ---
 
 # 👥 Anggota Kelompok
@@ -15,7 +14,7 @@
 # 🔗 Link Penting
 
 **Link ZIP Project**
-> (soon)
+> https://drive.google.com/file/d/1ImgiDyooKtCElKVbwWVR7hIJDJx9JBh6/view?usp=sharing
 
 **Link PPT Presentasi**
 > (soon)
@@ -62,7 +61,7 @@ Fitur ini menggunakan **Regular Expression (Regex)** untuk memfilter karakter no
 
 ---
 
-### ⏱ 4. Stopwatch
+### ⏱️ 4. Stopwatch
 Fitur stopwatch sederhana untuk mengukur waktu.
 
 Fitur ini menggunakan:
@@ -73,25 +72,26 @@ Fitur ini menggunakan:
 ---
 
 ### 🔺 5. Pyramid Calculator
+
 Fitur ini menghitung:
 
 1️⃣ **Volume Piramida**
 
-\[
-V = \frac{1}{3} \times a^2 \times h
-\]
+$$
+V = \frac{1}{3} a^2 h
+$$
 
 2️⃣ **Luas Permukaan Piramida**
 
-\[
+$$
 L = a^2 + 2as
-\]
+$$
 
 dimana
 
-\[
+$$
 s = \sqrt{(a/2)^2 + h^2}
-\]
+$$
 
 ---
 
@@ -162,13 +162,14 @@ Pastikan perangkat sudah terinstall:
 Clone repository terlebih dahulu:
 
 ```bash
-git clone https://github.com/USERNAME/NAMA_REPOSITORY.git
+git clone https://github.com/AmnanBK/tpm-tugas-modul-4
 ```
 
 Masuk ke folder project:
 
 ```bash
-cd NAMA_REPOSITORY
+cd tpm-tugas-modul-4
+
 ```
 
 Install dependencies:
