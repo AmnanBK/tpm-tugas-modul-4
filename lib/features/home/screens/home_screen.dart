@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:tpm_tugas_modul_4/features/age_calculator/screens/age_calculator_screen.dart';
+import 'package:tpm_tugas_modul_4/features/hijriah_converter/screens/hijriah_converter.dart';
 import '../../stopwatch/screens/stopwatch_screen.dart';
 import '../../group_profile/screens/profile_screen.dart';
 import '../../calculator/screens/calculator_screen.dart';
 import '../../number_checker/screens/checker_screen.dart';
 import '../../pyramid/screens/pyramid_screen.dart';
 import '../../field_counter/screens/field_counter_screen.dart';
+import '../../weton_checker/screens/weton_checker_screen.dart';
 import '../../../core/theme/app_colors.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -19,10 +22,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final List<Widget> pages = [
-      _buildMainMenu(),
-      const ProfileScreen(),
-    ];
+    final List<Widget> pages = [_buildMainMenu(), const ProfileScreen()];
 
     return Scaffold(
       appBar: AppBar(
@@ -56,6 +56,9 @@ class _HomeScreenState extends State<HomeScreen> {
       'Total Digit',
       'Stopwatch',
       'Piramida',
+      'Konversi Hijriah',
+      'Cek Weton',
+      'Hitung Umur',
     ];
 
     return GridView.builder(
@@ -90,21 +93,42 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               );
             } else if (features[index] == 'Cek Angka') {
-              Navigator.push(context, 
-                MaterialPageRoute
-                  (builder: (context) => const CheckerScreen(),
-                )
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const CheckerScreen()),
               );
             } else if (features[index] == 'Piramida') {
-              Navigator.push(context, 
-                MaterialPageRoute
-                  (builder: (context) => const PyramidScreen(),
-                )
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const PyramidScreen()),
               );
             } else if (features[index] == 'Total Digit') {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => const FieldCounterScreen()),
+                MaterialPageRoute(
+                  builder: (context) => const FieldCounterScreen(),
+                ),
+              );
+            } else if (features[index] == 'Konversi Hijriah') {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const HijriahConverterScreen(),
+                ),
+              );
+            } else if (features[index] == 'Cek Weton') {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const WetonCheckerScreen(),
+                ),
+              );
+            } else if (features[index] == 'Hitung Umur') {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const AgeCalculatorScreen(),
+                ),
               );
             }
           },
@@ -135,5 +159,4 @@ class _HomeScreenState extends State<HomeScreen> {
       },
     );
   }
-
 }
