@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tpm_tugas_modul_4/features/age_calculator/screens/age_calculator_screen.dart';
 import 'package:tpm_tugas_modul_4/features/hijriah_converter/screens/hijriah_converter.dart';
 import '../../stopwatch/screens/stopwatch_screen.dart';
 import '../../group_profile/screens/profile_screen.dart';
@@ -57,6 +58,7 @@ class _HomeScreenState extends State<HomeScreen> {
       'Piramida',
       'Konversi Hijriah',
       'Cek Weton',
+      'Hitung Umur',
     ];
 
     return GridView.builder(
@@ -119,6 +121,13 @@ class _HomeScreenState extends State<HomeScreen> {
                 context,
                 MaterialPageRoute(
                   builder: (context) => const WetonCheckerScreen(),
+                ),
+              );
+            } else if (features[index] == 'Hitung Umur') {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const AgeCalculatorScreen(),
                 ),
               );
             }
