@@ -6,6 +6,7 @@ import '../../calculator/screens/calculator_screen.dart';
 import '../../number_checker/screens/checker_screen.dart';
 import '../../pyramid/screens/pyramid_screen.dart';
 import '../../field_counter/screens/field_counter_screen.dart';
+import '../../weton_checker/screens/weton_checker_screen.dart';
 import '../../../core/theme/app_colors.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -55,6 +56,7 @@ class _HomeScreenState extends State<HomeScreen> {
       'Stopwatch',
       'Piramida',
       'Konversi Hijriah',
+      'Cek Weton',
     ];
 
     return GridView.builder(
@@ -110,6 +112,13 @@ class _HomeScreenState extends State<HomeScreen> {
                 context,
                 MaterialPageRoute(
                   builder: (context) => const HijriahConverterScreen(),
+                ),
+              );
+            } else if (features[index] == 'Cek Weton') {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const WetonCheckerScreen(),
                 ),
               );
             }
