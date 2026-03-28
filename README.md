@@ -14,7 +14,7 @@
 # 🔗 Link Penting
 
 **Link ZIP Project**
-> https://drive.google.com/file/d/1ImgiDyooKtCElKVbwWVR7hIJDJx9JBh6/view?usp=sharing
+> [https://drive.google.com/file/d/1ImgiDyooKtCElKVbwWVR7hIJDJx9JBh6/view?usp=sharing](https://drive.google.com/drive/folders/1zIgAhtkZUJ3P0xWLdtL-TwSpuNqX0Nh2?usp=sharing)
 
 **Link PPT Presentasi**
 > https://www.canva.com/design/DAHDjn3Dtb8/gJZoD5jpbJo3YyPWsgpiJg/view?utm_content=DAHDjn3Dtb8&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h851649f072
