@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tpm_tugas_modul_4/features/hijriah_converter/screens/hijriah_converter.dart';
 import '../../stopwatch/screens/stopwatch_screen.dart';
 import '../../group_profile/screens/profile_screen.dart';
 import '../../calculator/screens/calculator_screen.dart';
@@ -19,10 +20,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final List<Widget> pages = [
-      _buildMainMenu(),
-      const ProfileScreen(),
-    ];
+    final List<Widget> pages = [_buildMainMenu(), const ProfileScreen()];
 
     return Scaffold(
       appBar: AppBar(
@@ -56,6 +54,7 @@ class _HomeScreenState extends State<HomeScreen> {
       'Total Digit',
       'Stopwatch',
       'Piramida',
+      'Konversi Hijriah',
     ];
 
     return GridView.builder(
@@ -90,21 +89,28 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               );
             } else if (features[index] == 'Cek Angka') {
-              Navigator.push(context, 
-                MaterialPageRoute
-                  (builder: (context) => const CheckerScreen(),
-                )
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const CheckerScreen()),
               );
             } else if (features[index] == 'Piramida') {
-              Navigator.push(context, 
-                MaterialPageRoute
-                  (builder: (context) => const PyramidScreen(),
-                )
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const PyramidScreen()),
               );
             } else if (features[index] == 'Total Digit') {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => const FieldCounterScreen()),
+                MaterialPageRoute(
+                  builder: (context) => const FieldCounterScreen(),
+                ),
+              );
+            } else if (features[index] == 'Konversi Hijriah') {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const HijriahConverterScreen(),
+                ),
               );
             }
           },
@@ -135,5 +141,4 @@ class _HomeScreenState extends State<HomeScreen> {
       },
     );
   }
-
 }
